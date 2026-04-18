@@ -23,11 +23,10 @@ jobs:
         with :
           python-version: '3.12'
       
-      - script: |
-          python -m venv atev
+      - run: |
+          python -m venv antev
           source antev/bin/activate
           python -m pip install --upgrade pip
-          pip install setup
           pip install -r requirements.txt
       
 
