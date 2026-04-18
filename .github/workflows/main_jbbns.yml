@@ -27,19 +27,13 @@ jobs:
         run : pip install -r requirements.txt
 
       - name : Zip artifact
-        run : zip -r app.zip
+        run : zip -r app.zip .
 
-      - name : Upload artifact or deployment job
+      - name : Upload artifact for deployment job
         uses : actions/upload-artifact@v4
         with:
           name: python-app
           path: app.zip
-
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v4
-        with:
-          name: php-app
-          path: .
 
   deploy:
     runs-on: ubuntu-latest
