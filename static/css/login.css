@@ -1,0 +1,96 @@
+:root {
+    --j-black: #050505;
+    --j-cyan: #44CBDC;
+    --j-bone: #DDDBCB;
+    --j-lace: #F5F1E3;
+    --j-white: #FFFFFF;
+}
+
+body {
+    color: var(--j-black);
+    background-color: var(--j-lace);
+    margin: 0;
+}
+
+header {
+    background-color: var(--j-cyan);
+    width: 100%;
+    height: 20em;
+    display: flex;
+    position: relative;
+}
+
+header img {
+    width: 15%;
+    padding: 10px;
+}
+
+header h1 {
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+    font-size: 3em;
+}
+
+form {
+    background-color: var(--j-bone);
+    margin: 0;
+    height: 30em;
+    display: flex;
+    flex-direction: column;
+
+    place-items: center;
+    justify-content: center;
+}
+
+form div {
+    width: 50%;
+    height: 35%;
+
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 50px 50px;
+    place-items: center;
+    justify-content: center;
+}
+
+form div label {
+    padding: 1em;
+    font-size: 1.5em;
+    text-align: right;
+    width: 100%;
+}
+
+form div input {
+    margin: 1em;
+    padding: 0.5em;
+    width: 18em;
+}
+
+form div.inputDiv {
+    grid-template-columns: auto;
+    grid-row-gap: 2em;
+}
+
+.inputDiv input {
+    border: none;
+    height: 3em;
+    width: 95%;
+    margin: 2em;
+    border-radius: 2px;
+    background-color: var(--j-lace);
+    font-size: 1.5em;
+}
+
+.inputDiv input:hover {
+    border-radius: 5px;
+    background-color: var(--j-white);
+    transform: scale(1.05);
+}
+
+.inputDiv input:active {
+    border-radius: 10px;
+    transform: scale(1.1);
+}

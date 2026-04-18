@@ -1,0 +1,172 @@
+:root {
+    --j-black: #050505;
+    --j-cyan: #44CBDC;
+    --j-bone: #DDDBCB;
+    --j-lace: #F5F1E3;
+    --j-white: #FFFFFF;
+}
+
+body {
+    color: var(--j-black);
+    background-color: var(--j-lace);
+    margin: 0;
+}
+
+header {
+    background-color: var(--j-cyan);
+    width: 100%;
+    height: 15em;
+    display: flex;
+    align-items: center;
+}
+
+header input {
+    position: absolute;
+    top: 4em;
+    right: 4em;
+    width: 5em;
+    height: 3em;
+
+    text-decoration: none;
+    border: none;
+    border-radius: 2px;
+    background-color: var(--j-bone);
+}
+
+header input:hover {
+    background-color: var(--j-lace);
+    transform: scale(1.05);
+    border-radius: 3px;
+}
+
+header input:active {
+    background-color: var(--j-white);
+    transform: scale(1.1);
+    border-radius: 5px;
+}
+
+nav {
+    display: flex;
+    background-color: var(--j-bone);
+    width: 100%;
+    height: 6em;
+}
+
+nav input {
+    height: 100%;
+    width: 33%;
+    padding: 0;
+    margin: 0;
+    background-color: var(--j-bone);
+    text-decoration: none;
+    border-width: 0 1.5px;
+    border-color: var(--j-black);
+
+    font-size: 3em;
+}
+
+nav input:hover {
+    background-color: var(--j-lace);
+
+    font-size: 3.2em;
+}
+
+nav input:active {
+    background-color: var(--j-white);
+
+    font-size: 3.5em;
+}
+
+.logo--big {
+    height: 90%;
+    width: auto;
+}
+
+main {
+    margin: 1em;
+    padding: 1em;
+
+    column-count: 4;
+    column-gap: 1em;
+}
+
+@media (max-width: 1200px) {
+    main { column-count: 2; }
+}
+
+main input.image {
+    display: inline-block;
+    height: auto;
+    width: 100%;
+}
+
+main input.image:hover {
+    transform: scale(1.05);
+}
+
+main input.image:active {
+    transform: scale(1.1);
+}
+
+figure {
+    background-color: #050505E5;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+
+    position: fixed;
+    width: 80%;
+    height: 60%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+figure img {
+    position: relative;
+    padding: 2%;
+    width: auto;
+    height: 90%;
+}
+
+figure figcaption {
+    position: relative;
+    color: var(--j-white);
+    font-size: 3em;
+    top: 2%;
+    padding: 0.5em;
+}
+
+figure input {
+    position: absolute;
+    top: 2vh;
+    right: 2vw;
+
+    width: 4em;
+    height: 4em;
+    background-color: #F5F1E345;
+
+    border-radius: 10px;
+}
+
+figure input:hover {
+    background-color: #F5F1E3A5;
+    transform: scale(1.05);
+    border-radius: 12px;
+}
+
+figure input:active {
+    background-color: var(--j-bone);
+    transform: scale(1.2);
+    border-radius: 15px;
+}
+
+/* Functionality */
+
+.inactive {
+    display: none;
+}
+
+.active {
+    display: flex;
+}

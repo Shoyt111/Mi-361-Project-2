@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JBBNS imgShare</title>
+
+    <script>
+    async function setMessage() {
+        const form = new FormData();
+        form.append("token", localStorage.getItem("token"));
+        const r = await fetch("/decode_token", {method : "POST", body : form});
+        const data = await r.json();
+        return data['email'];
+    }
+
+    async function updateMessage()
+    {
+        const email = await setMessage();
+        document.getElementById("msg").textContent = "Hello " + email + "!";
+    }
+
+    updateMessage();
+    </script>
+
+    <link rel="stylesheet" href="static/css/styles.css">
+    <script src="static/js/index.js"></script>
+</head>
+<body>
+    <header>
+        <img src="static/resources/jbbns_logo.svg" class="logo--big">
+        <input type="button" value="Log In" onclick="openLogin()" id="accountButton">
+        <h1 id="msg"></h1>
+    </header>
+
+    <nav>
+        <input type="button" value="My Photos" onclick="instantiateUserImages()">
+        <input type="button" value="All Photos" onclick="instantiateAllImages()">
+    </nav>
+
+    <h1> Upload Pictures Here!</h1>
+    <form method = "post" enctype = "multipart/form-data">
+        <input type="file" id="picture" name="filename">
+        <input type = "button" value = "Upload" onclick = "sendPictureToFlask()">
+    </form>
+
+    <script>
+        function sendPictureToFlask(){
+            const pic = document.getElementById('picture')
+            upload(pic)
+        }
+    </script>
+
+    <main></main>
+
+
+    <figure class="inactive">
+        <img src="static/resources/temp/bigpoo.jpg">
+        <figcaption>Super extra long image title to make the thing fall off the side of the page</figcaption>
+        <input type="image" src="static/resources/x.svg" onclick="closeDetails()">
+    </figure>
+</body>
+</html>

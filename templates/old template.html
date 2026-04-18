@@ -1,0 +1,44 @@
+<html lang="English">
+    <head>
+        <body>
+            <title>
+                JBBNS Image Handling
+            </title>
+            <meta charset = "UTF-8">
+            <meta name = "viewport" content = "width=device-width", inital-scale = 1.0">
+            <style>
+                body { background-color: lightblue;}
+
+               .LoginBox {position: relative; left: 50px; border: 3px solid black; background: white; width: 200px;}
+
+                .username_text {position: relative; left: 5px;}
+                .password_text {position: relative; left: 5px;}
+                .username_box {position: relative; left: 5px;}
+                .password_box {position: relative; left: 5px;}
+                .submit_box {position: relative; left: 65px; bottom: 10px;}
+
+            </style>
+            <background_image class ="image", id="background_image">
+                <img
+                src = "company-background.jpg"
+                alt = "Company Logo"
+                width = 50
+                >
+            </background_image>
+
+            <form action = "/process" method = "POST" class = "LoginBox">
+                <label for ="username" class = "username_text">Username:</label>
+                <input type = "text" name = "username" class = "username_box"><br><br>
+
+                <label for = "password" class = "password_text">Password:</label>
+                <input type = "text" name = "password" class = "password_box"><br><br>
+                <button type = "submit" class = "submit_box"> Submit </button>
+            </form>
+
+            <form test = "/upload" method = "POST" class = "UploadBox">
+                <input type="file" id="fileInput">
+
+            </form>
+        </body>
+    </head>
+</html>

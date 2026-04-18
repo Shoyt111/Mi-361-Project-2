@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy PHP app to Azure Web App - JBBNS
+name: Build and deploy Python Flask app to Azure Web App - JBBNS
 
 on:
   push:
@@ -18,21 +18,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+      - name: Set up Python
+        uses : actions/setup-python@v5
+        with :
+          python-version: '3.10'
+      
+      - name : Install dependencies
+        run : pip install -r requirements.txt
+
+      - name : Zip artifact
+        run : zip -r app.zip
+
+      - name : Upload artifact or deployment job
+        uses : actions/upload-artifact@v4
         with:
-          php-version: '8.5'
-
-      - name: Check if composer.json exists
-        id: check_files
-        uses: andstor/file-existence-action@v1
-        with:
-          files: 'composer.json'
-
-      - name: Run composer install if composer.json exists
-        if: steps.check_files.outputs.files_exists == 'true'
-        run: composer validate --no-check-publish && composer install --prefer-dist --no-progress
-
+          name: python-app
+          path: app.zip
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -51,7 +52,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
-          name: php-app
+          name: python-app
       
       - name: Login to Azure
         uses: azure/login@v2
@@ -66,5 +67,5 @@ jobs:
         with:
           app-name: 'JBBNS'
           slot-name: 'Production'
-          package: .
+          package: app.zip
           

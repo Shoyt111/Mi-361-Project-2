@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JBBNS Login</title>
+    <link rel="stylesheet" href="login.css">
+    <script src="login.js"></script>
+</head>
+<body>
+    <header>
+        <img src="../resources/jbbns_logo.svg" class="logo--big">
+        <h1>Log in to view gallery!</h1>
+    </header>
+
+    <form method="post">
+        <div>
+            <label for="emailField">Email</label>
+            <input type="text" id="emailField" placeholder="Email...">
+
+            <label for="passField">Password</label>
+            <input type="password" id="passField">
+        </div>
+
+        <div class="inputDiv">
+            <input type="submit" value="Login" id="loginButton">
+            <input type="button" value="I don't have an account!" id="createButton" onclick="createAccount();">
+        </div>
+    </form>
+
+</body>
+</html>
