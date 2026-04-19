@@ -5,6 +5,8 @@
     <title>JBBNS Login</title>
     <link rel="stylesheet" href="login.css">
     <script src="login.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="132543181629-bjq71rjq934rkbme2ujc9eiiqd6ntrjk.apps.googleusercontent.com">
 </head>
 <body>
     <header>
@@ -25,7 +27,7 @@
             <input type="submit" value="Login" id="loginButton">
             <input type="button" value="I don't have an account!" id="createButton" onclick="createAccount();">
         </div>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
     </form>
-
 </body>
 </html>

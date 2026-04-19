@@ -5,6 +5,9 @@
     <title>JBBNS Login</title>
     <link rel="stylesheet" href="static/css/login.css">
     <script src="static/js/login.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <meta name="google-signin-client_id" content="132543181629-bjq71rjq934rkbme2ujc9eiiqd6ntrjk.apps.googleusercontent.com">
 </head>
 <body>
     <header>
@@ -12,6 +15,8 @@
         <h1>Log in to view gallery!</h1>
     </header>
 
+
+<!-- OLD LOGIN FUNCTION
     <form method="post" action="/login">
         <div>
             <label for="emailField">Email</label>
@@ -20,10 +25,17 @@
             <label for="passField">Password</label>
             <input type="password" id="passField" name="pass">
         </div>
-
         <div class="inputDiv">
             <input type="button" value="Login" id="loginButton" onclick = "createForm('login');">
-            <input type="button" value="Create Account" id="createButton" onclick="createForm('create')">
+            <input type="button" value="Create Account" id="createButton" onclick="createForm('create')">-->
+        <div class = "googleButton">
+            <div id="g_id_onload"
+            data-client_id="132543181629-bjq71rjq934rkbme2ujc9eiiqd6ntrjk.apps.googleusercontent.com"
+            data-callback="handleCredentialResponse">
+            </div>
+        <div class="g_id_signin"></div>
+</div>
+
     </form>
     <script>
         function createForm(mode)

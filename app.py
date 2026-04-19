@@ -5,6 +5,7 @@ import hashlib
 import datetime
 import jwt
 from jwt import InvalidSignatureError
+import requests #google sign-in
 
 app = Flask(__name__)
 db_name = "jbbns.db"
@@ -146,3 +147,34 @@ def get_user_images():
         
     print(file_list)
     return jsonify({"status" : 1, "photos" : file_list})
+
+
+#GOOGLE SIGN-IN
+
+@app.route("/google_login", methods=["POST"])
+def google_login():
+    data = request.get_json()
+    id_token = data["token"]
+
+    google_url = f"https://oauth2.googleapis.com/tokeninfo?id_token={id_token}"
+    r = requests.get(google_url)
+
+    if r.status_code != 200:
+        return jsonify({"status": 2})
+
+    user_info = r.json()
+    email = user_info["email"]
+    conn = get_db()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT count(*) FROM Users WHERE email == ?", (email,))
+    exists = cursor.fetchone()[0]
+    if not exists:
+        cursor.execute("INSERT INTO Users VALUES (?, ?)", (email, "GOOGLE"))
+        conn.commit()
+
+    conn.close()
+    payload = {"email": email}
+    token = jwt.encode(payload, SECRET, algorithm="HS256")
+
+    return jsonify({"status": 1, "token": token})

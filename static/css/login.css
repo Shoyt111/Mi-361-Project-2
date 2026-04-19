@@ -18,6 +18,7 @@ header {
     height: 20em;
     display: flex;
     position: relative;
+    margin-bottom: 40px;
 }
 
 header img {
@@ -93,4 +94,10 @@ form div.inputDiv {
 .inputDiv input:active {
     border-radius: 10px;
     transform: scale(1.1);
+}
+
+.googleButton {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }

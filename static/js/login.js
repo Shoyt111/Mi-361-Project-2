@@ -42,3 +42,45 @@ function login(email, pass)
     });
 
 }
+function onSignIn(googleUser) {
+    const id_token = googleUser.getAuthResponse().id_token;
+    fetch("/google_login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ token: id_token })
+    })
+    .then(r => r.json())
+    .then(data => {
+        if (data.status === 1) {
+            localStorage.setItem("token", data.token);
+            window.location.href = "/picture_page";
+        } else {
+            alert("Google login failed");
+        }
+    });
+}
+function handleCredentialResponse(response) {
+    const id_token = response.credential;
+
+    fetch("/google_login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ token: id_token })
+    })
+    .then(r => r.json())
+    .then(data => {
+        console.log(data); // <-- ADD THIS
+
+        if (data.status === 1) {
+            localStorage.setItem("token", data.token);
+            window.location.href = "/picture_page";
+        } else {
+            alert("Login failed");
+        }
+    })
+    .catch(err => console.error(err));
+}
