@@ -3,25 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>JBBNS imgShare</title>
-
-    <script>
-    async function setMessage() {
-        const form = new FormData();
-        form.append("token", localStorage.getItem("token"));
-        const r = await fetch("/decode_token", {method : "POST", body : form});
-        const data = await r.json();
-        return data['email'];
-    }
-
-    async function updateMessage()
-    {
-        const email = await setMessage();
-        document.getElementById("msg").textContent = "Hello " + email + "!";
-    }
-
-    updateMessage();
-    </script>
-
     <link rel="stylesheet" href="static/css/styles.css">
     <script src="static/js/index.js"></script>
 </head>
@@ -48,6 +29,24 @@
             const pic = document.getElementById('picture')
             upload(pic)
         }
+    </script>
+
+    <script>
+    async function setMessage() {
+        const form = new FormData();
+        form.append("token", localStorage.getItem("token"));
+        const r = await fetch("/decode_token", {method : "POST", body : form});
+        const data = await r.json();
+        return data['email'];
+    }
+
+    async function updateMessage()
+    {
+        const email = await setMessage();
+        document.getElementById("msg").textContent = "Hello " + email + "!";
+    }
+
+    updateMessage();
     </script>
 
     <main></main>
